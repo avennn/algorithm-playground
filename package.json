@@ -1,0 +1,32 @@
+{
+  "name": "algorithm-playground",
+  "version": "1.0.0",
+  "description": "算法练习",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha ./exercises/**/test.js"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "expect.js": "^0.3.1",
+    "mocha": "^6.1.4",
+    "prettier": "1.18.2",
+    "seedrandom": "^3.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avennn/algorithm-playground.git"
+  },
+  "keywords": [
+    "algorithm",
+    "exercise"
+  ],
+  "author": "Javen Leung",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/avennn/algorithm-playground/issues"
+  },
+  "homepage": "https://github.com/avennn/algorithm-playground#readme"
+}
