@@ -8,6 +8,10 @@
  * 输入: "cbbd"
  * 输出: "bb"
  */
-const longestPalindrome = function(s) {};
+const longestPalindrome = function(s) {
+  const arr1 = s.split('');
+  const arr2 = arr1.reverse();
+  return s[0];
+};
 
 module.exports = longestPalindrome;
