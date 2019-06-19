@@ -9,9 +9,32 @@
  * 输出: "bb"
  */
 const longestPalindrome = function(s) {
-  const arr1 = s.split('');
-  const arr2 = arr1.reverse();
-  return s[0];
+  // 参考题解，中心扩展算法。更优解：Manacher算法？
+  if (!s) {
+    return '';
+  }
+  let start = 0;
+  let end = 0;
+  for (let i = 0; i < s.length; i++) {
+    const len1 = expandAroundCenter(s, i, i);
+    const len2 = expandAroundCenter(s, i, i + 1);
+    const maxLen = Math.max(len1, len2);
+    if (maxLen > end - start + 1) {
+      start = i - Math.floor((maxLen - 1) / 2);
+      end = i + Math.floor(maxLen / 2);
+    }
+  }
+  return s.substring(start, end + 1);
+
+  function expandAroundCenter(s, left, right) {
+    let l = left;
+    let r = right;
+    while (l >= 0 && r < s.length && s[l] === s[r]) {
+      l--;
+      r++;
+    }
+    return r - l - 1;
+  }
 };
 
 module.exports = longestPalindrome;
