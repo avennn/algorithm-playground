@@ -9,34 +9,38 @@
  *   [-1, -1, 2]
  * ]
  */
-
 const threeSum = function(nums) {
-  function findTwoSum(twoSumTarget, index) {
-    const arr = [];
-    for (let j = index + 1; j < nums.length - 1; j++) {
-      if (j === index + 1 || nums[j] !== nums[j - 1]) {
-        const target = twoSumTarget - nums[j];
-        for (let k = j + 1; k < nums.length; k++) {
-          if ((k === j + 1 || nums[k] !== nums[k - 1]) && nums[k] === target) {
-            arr.push([nums[j], target]);
-          }
+  let res = [];
+  let length = nums.length;
+  nums.sort((a, b) => a - b); // 先排个队，最左边是最弱（小）的，最右边是最强(大)的
+  if (nums[0] <= 0 && nums[length - 1] >= 0) {
+    // 优化1: 整个数组同符号，则无解
+    for (let i = 0; i < length - 2; ) {
+      if (nums[i] > 0) break; // 优化2: 最左值为正数则一定无解
+      let first = i + 1;
+      let last = length - 1;
+      do {
+        if (first >= last || nums[i] * nums[last] > 0) break; // 两人选相遇，或者三人同符号，则退出
+        let result = nums[i] + nums[first] + nums[last];
+        if (result === 0) {
+          // 如果可以组队
+          res.push([nums[i], nums[first], nums[last]]);
         }
-      }
+        if (result <= 0) {
+          // 实力太弱，把菜鸟那边右移一位
+          // eslint-disable-next-line
+          while (first < last && nums[first] === nums[++first]) {} // 如果相等就跳过
+        } else {
+          // 实力太强，把大神那边右移一位
+          // eslint-disable-next-line
+          while (first < last && nums[last] === nums[--last]) {}
+        }
+      } while (first < last);
+      // eslint-disable-next-line
+      while (nums[i] === nums[++i]) {}
     }
-    return arr;
   }
-  const arr = [];
-  const sortedNums = nums.sort((a, b) => a - b);
-  for (let i = 0; i < sortedNums.length - 2; i++) {
-    if (i === 0 || nums[i] !== nums[i - 1]) {
-      const target = -sortedNums[i];
-      const arrs = findTwoSum(target, i);
-      for (let m = 0; m < arrs.length; m++) {
-        arr.push([nums[i]].concat(arrs[m]));
-      }
-    }
-  }
-  return arr;
+  return res;
 };
 
 module.exports = threeSum;
