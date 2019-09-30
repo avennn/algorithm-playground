@@ -4,7 +4,8 @@
   "description": "算法练习",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha ./exercises/**/test.js"
+    "test": "./node_modules/.bin/mocha ./exercises/**/test.js",
+    "run-test": "node ./test.run.js"
   },
   "devDependencies": {
     "eslint": "^6.4.0",
@@ -28,5 +29,6 @@
   "bugs": {
     "url": "https://github.com/avennn/algorithm-playground/issues"
   },
-  "homepage": "https://github.com/avennn/algorithm-playground#readme"
+  "homepage": "https://github.com/avennn/algorithm-playground#readme",
+  "dependencies": {}
 }
