@@ -38,9 +38,5 @@ function getTargePath() {
 }
 
 exec(`./node_modules/.bin/mocha ${getTargePath()}`, (err, stdout) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
   console.log(stdout);
 });
