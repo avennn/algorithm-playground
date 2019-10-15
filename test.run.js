@@ -24,8 +24,12 @@ function getTargePath() {
       const queue = files.map(f => getFilePath(p, f));
       let file = queue.shift();
       while (file && isDir(file)) {
-        if (isEnd(file) && file.endsWith(dirName)) {
-          return path.join(file, 'test.js');
+        if (isEnd(file)) {
+          const arr = file.split('/');
+          const fileName = arr[arr.length - 1];
+          if (fileName === dirName) {
+            return path.join(file, 'test.js');
+          }
         }
         const items = fs.readdirSync(file);
         queue.push(...items.map(item => getFilePath(file, item)));
