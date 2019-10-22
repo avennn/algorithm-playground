@@ -13,7 +13,8 @@ module.exports = {
   },
   globals: {
     describe: true,
-    it: true
+    it: true,
+    Promise: true
   },
   extends: ['eslint:recommended', 'prettier'],
   plugins: ['prettier'],
