@@ -6,4 +6,10 @@
 
 Mocha
 
-## test commit
+## how to test single algorithm
+
+例如：
+
+```sh
+npm run run-test 困于环中的机器人
+```
